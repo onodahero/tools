@@ -14,6 +14,10 @@
 		687C51D520B695930030DA97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 687C51D320B695930030DA97 /* LaunchScreen.storyboard */; };
 		687C51E020B695940030DA97 /* tool2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687C51DF20B695940030DA97 /* tool2Tests.swift */; };
 		687C51EB20B695940030DA97 /* tool2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687C51EA20B695940030DA97 /* tool2UITests.swift */; };
+		68A0369720B696CF00304568 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A0369620B696CF00304568 /* icon.png */; };
+		68A0369920B6978D00304568 /* CopyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A0369820B6978D00304568 /* CopyTableViewController.swift */; };
+		68A0369C20B6984800304568 /* CopyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A0369A20B6984800304568 /* CopyTableViewCell.swift */; };
+		68A0369D20B6984800304568 /* CopyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68A0369B20B6984800304568 /* CopyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		687C51E620B695940030DA97 /* tool2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tool2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		687C51EA20B695940030DA97 /* tool2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tool2UITests.swift; sourceTree = "<group>"; };
 		687C51EC20B695940030DA97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68A0369620B696CF00304568 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		68A0369820B6978D00304568 /* CopyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyTableViewController.swift; sourceTree = "<group>"; };
+		68A0369A20B6984800304568 /* CopyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyTableViewCell.swift; sourceTree = "<group>"; };
+		68A0369B20B6984800304568 /* CopyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CopyTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 				687C51D120B695930030DA97 /* Assets.xcassets */,
 				687C51D320B695930030DA97 /* LaunchScreen.storyboard */,
 				687C51D620B695930030DA97 /* Info.plist */,
+				68A0369620B696CF00304568 /* icon.png */,
+				68A0369820B6978D00304568 /* CopyTableViewController.swift */,
+				68A0369A20B6984800304568 /* CopyTableViewCell.swift */,
+				68A0369B20B6984800304568 /* CopyTableViewCell.xib */,
 			);
 			path = tool2;
 			sourceTree = "<group>";
@@ -232,6 +244,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68A0369720B696CF00304568 /* icon.png in Resources */,
+				68A0369D20B6984800304568 /* CopyTableViewCell.xib in Resources */,
 				687C51D520B695930030DA97 /* LaunchScreen.storyboard in Resources */,
 				687C51D220B695930030DA97 /* Assets.xcassets in Resources */,
 				687C51D020B695930030DA97 /* Main.storyboard in Resources */,
@@ -259,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68A0369C20B6984800304568 /* CopyTableViewCell.swift in Sources */,
 				687C51CD20B695930030DA97 /* ViewController.swift in Sources */,
 				687C51CB20B695930030DA97 /* AppDelegate.swift in Sources */,
+				68A0369920B6978D00304568 /* CopyTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,9 +443,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tool2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.litech.tool2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hiroto.tool2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -441,9 +459,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tool2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.litech.tool2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hiroto.tool2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
