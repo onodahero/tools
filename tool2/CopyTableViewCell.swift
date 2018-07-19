@@ -10,6 +10,7 @@ import UIKit
 
 protocol CellDelegate: class {
     func copy(_ cell: CopyTableViewCell)
+    func clip(_ cell: CopyTableViewCell)
 }
 
 class CopyTableViewCell: UITableViewCell {
@@ -33,5 +34,8 @@ class CopyTableViewCell: UITableViewCell {
         print("button")
     }
     
+    @IBAction func clipButton(_ sender: Any) {
+        delegate?.clip(self)
+    }
     
 }

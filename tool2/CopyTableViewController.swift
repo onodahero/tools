@@ -7,22 +7,28 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CopyTableViewController: UITableViewController, CellDelegate {
     
-    var texts: [String] = []
-    var alldata = UserDefaults.standard
+    var copydata: CopyData!
+    let realm = try! Realm()
+    var copydataArray: Results<CopyData>!
+    
+    let sortProperties = [
+        SortDescriptor(keyPath: "tag", ascending: false),
+        SortDescriptor(keyPath: "text", ascending: true) ]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "CopyTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "copyTableViewCell")
-        if let data = alldata.object(forKey: "texts") {
-            texts = alldata.object(forKey: "texts") as! [String]
-        }
-            
+        copydataArray = realm.objects(CopyData.self).sorted(by: sortProperties)
+        print(copydataArray)
         
-
+        let folderPath = realm.configuration.fileURL?.deletingLastPathComponent().path
+        print(folderPath)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,19 +51,22 @@ class CopyTableViewController: UITableViewController, CellDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return texts.count
+        return copydataArray.count
     }
     
     @IBAction func add(_ sender: Any) {
+        copydata = CopyData()
         let alert = UIAlertController(title: "テキストの追加", message: "テキスト", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "追加", style: .default, handler: {
             (action: UIAlertAction) -> Void in
             let textField = alert.textFields![0]
             if textField.text != "" {
-                self.texts.append(textField.text!)
-                self.tableView.reloadData()
-                print(self.texts)
-                self.alldata.set(self.texts, forKey: "texts")
+                try! self.realm.write {
+                    self.copydata.text = textField.text!
+                    self.copydata.tag = 0
+                    self.realm.add(self.copydata)
+                }
+                self.updateData()
                 
             }
         })
@@ -70,27 +79,44 @@ class CopyTableViewController: UITableViewController, CellDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         copydataArray = realm.objects(CopyData.self).sorted(by: sortProperties)
         let cell = tableView.dequeueReusableCell(withIdentifier: "copyTableViewCell", for: indexPath) as! CopyTableViewCell
-        cell.copyLabel.text = texts[indexPath.row]
+        cell.copyLabel.text = copydataArray[indexPath.row].text
         cell.delegate = self
         // Configure the cell...
 
         return cell
     }
     
-    
-    
     func copy(_ cell: CopyTableViewCell) {
-        print("a")
         let board = UIPasteboard.general
-        board.setValue(texts[(tableView.indexPath(for: cell)?.row)!], forPasteboardType: "public.text")
-        board.string = texts[(tableView.indexPath(for: cell)?.row)!]
+        board.setValue(copydataArray[(tableView.indexPath(for: cell)?.row)!].text, forPasteboardType: "public.text")
+        board.string = copydataArray[(tableView.indexPath(for: cell)?.row)!].text
         let alert = UIAlertController(title: "完了", message: "コピーしました", preferredStyle: .alert)
         present(alert, animated: false, completion: {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     alert.dismiss(animated: true, completion: nil)
                 })
         })
+    }
+    
+    func clip(_ cell: CopyTableViewCell) {
+        print(cell.copyLabel.text)
+        try! realm.write {
+            copydataArray[(tableView.indexPath(for: cell)?.row)!].tag = 1
+        }
+        updateData()
+    }
+    
+    func updateData(){
+        copydataArray.sorted {(A,B) -> Bool in
+            if A.tag <= B.tag {
+                return true
+            }else{
+            return false
+            }
+        }
+        tableView.reloadData()
     }
 
     /*
