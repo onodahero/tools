@@ -9,6 +9,8 @@
 import UIKit
 
 class KeyboardViewController: UIInputViewController {
+    
+    let data = UserDefaults(suiteName: "group.com.hiroto")
 
     @IBOutlet var nextKeyboardButton: UIButton!
     
@@ -20,6 +22,9 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let copyarray = data?.array(forKey: "copy")
+        print(copyarray![0])
+        
         
         // Perform custom UI setup here
         self.nextKeyboardButton = UIButton(type: .system)
@@ -57,5 +62,9 @@ class KeyboardViewController: UIInputViewController {
         }
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
-
+    
+    
+    @IBAction func button(_ sender: Any) {
+    }
+    
 }

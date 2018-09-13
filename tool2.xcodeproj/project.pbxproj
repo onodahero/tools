@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12786E6E20A302DEFEC663DB /* Pods_tool2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C45EDD63BA8872A373BB5E7 /* Pods_tool2UITests.framework */; };
 		3435BF0E217B235B0431D9EE /* Pods_tool2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF1596593D1D1744AA6440E /* Pods_tool2.framework */; };
+		681A807D214135FC00CCCC3E /* keyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 681A807C214135FC00CCCC3E /* keyboardView.xib */; };
 		687B342021008F9300456E7B /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B341F21008F9300456E7B /* KeyboardViewController.swift */; };
 		687B342421008F9300456E7B /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 687B341D21008F9300456E7B /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		687C51CB20B695930030DA97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687C51CA20B695930030DA97 /* AppDelegate.swift */; };
@@ -69,6 +70,9 @@
 		2FF1596593D1D1744AA6440E /* Pods_tool2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tool2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		555399534FA2A9EA757DD79B /* Pods-tool2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tool2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tool2UITests/Pods-tool2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		66B6F0554DCE66C321C78A53 /* Pods-tool2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tool2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tool2Tests/Pods-tool2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		681A807C214135FC00CCCC3E /* keyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = keyboardView.xib; sourceTree = "<group>"; };
+		681A807E214A479F00CCCC3E /* tool2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tool2.entitlements; sourceTree = "<group>"; };
+		681A807F214A480B00CCCC3E /* keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = keyboard.entitlements; sourceTree = "<group>"; };
 		687B341D21008F9300456E7B /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		687B341F21008F9300456E7B /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		687B342121008F9300456E7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,8 +139,10 @@
 		687B341E21008F9300456E7B /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				681A807F214A480B00CCCC3E /* keyboard.entitlements */,
 				687B341F21008F9300456E7B /* KeyboardViewController.swift */,
 				687B342121008F9300456E7B /* Info.plist */,
+				681A807C214135FC00CCCC3E /* keyboardView.xib */,
 			);
 			path = keyboard;
 			sourceTree = "<group>";
@@ -168,6 +174,7 @@
 		687C51C920B695930030DA97 /* tool2 */ = {
 			isa = PBXGroup;
 			children = (
+				681A807E214A479F00CCCC3E /* tool2.entitlements */,
 				687C51CA20B695930030DA97 /* AppDelegate.swift */,
 				687C51CC20B695930030DA97 /* ViewController.swift */,
 				687C51CE20B695930030DA97 /* Main.storyboard */,
@@ -321,10 +328,20 @@
 					687B341C21008F9300456E7B = {
 						CreatedOnToolsVersion = 9.4.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					687C51C620B695930030DA97 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					687C51DA20B695940030DA97 = {
 						CreatedOnToolsVersion = 9.2;
@@ -364,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				681A807D214135FC00CCCC3E /* keyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +648,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = keyboard/keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84Q47FTZCU;
 				INFOPLIST_FILE = keyboard/Info.plist;
@@ -649,6 +668,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = keyboard/keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84Q47FTZCU;
 				INFOPLIST_FILE = keyboard/Info.plist;
@@ -777,6 +797,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = tool2/tool2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84Q47FTZCU;
 				INFOPLIST_FILE = tool2/Info.plist;
@@ -795,6 +816,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = tool2/tool2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84Q47FTZCU;
 				INFOPLIST_FILE = tool2/Info.plist;

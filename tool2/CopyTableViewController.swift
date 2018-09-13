@@ -11,10 +11,11 @@ import RealmSwift
 
 class CopyTableViewController: UITableViewController, CellDelegate {
     
+    let data = UserDefaults(suiteName: "group.com.hiroto")
     var copydata: CopyData!
     let realm = try! Realm()
     var copydataArray: Results<CopyData>!
-    
+    var textarray: [String]!
     let sortProperties = [
         SortDescriptor(keyPath: "tag", ascending: false),
         SortDescriptor(keyPath: "text", ascending: true) ]
@@ -116,7 +117,14 @@ class CopyTableViewController: UITableViewController, CellDelegate {
             return false
             }
         }
+        textarray = []
+        for i in copydataArray {
+            textarray.append(i.text)
+        }
+        data?.set(textarray, forKey: "copy")
+        print(textarray)
         tableView.reloadData()
+        
     }
 
     /*
