@@ -11,6 +11,7 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     
     let data = UserDefaults(suiteName: "group.com.hiroto")
+    
 
     @IBOutlet var nextKeyboardButton: UIButton!
     
@@ -22,6 +23,9 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var v = UINib(nibName: "keyboardView", bundle: nil).instantiate(withOwner: self, options: nil)
+//        var v = UINib(nibName : "key, bundle bundleOrNil: Bundle?)
+        self.inputView.addSubview()
         let copyarray = data?.array(forKey: "copy")
         print(copyarray![0])
         
@@ -39,6 +43,8 @@ class KeyboardViewController: UIInputViewController {
         
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,8 +69,9 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
     
-    
-    @IBAction func button(_ sender: Any) {
+    @IBAction func pasteButton(_ sender: Any) {
     }
+    
+    
     
 }
